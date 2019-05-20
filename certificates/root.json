@@ -1,0 +1,23 @@
+{
+  "CN": "OpenVPN-RootCA",
+  "hosts": [
+    "clemart.tk",
+    "127.0.0.1"
+  ],
+  "key": {
+      "algo": "rsa",
+      "size": 4096
+  },
+  "names": [
+      {
+          "C":  "FR",
+          "L":  "Lyon",
+          "O":  "ClemArt",
+          "OU": "Test",
+          "ST": "Rhone"
+      }
+  ],
+  "CA": {
+    "expiry": "3600h"
+  }
+}
