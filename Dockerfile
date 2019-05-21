@@ -9,6 +9,7 @@ RUN curl -L https://pkg.cfssl.org/R1.2/cfssl_linux-amd64 -o /usr/bin/cfssl && \
     chmod +x /usr/bin/cfssl*
 
 COPY ./docker-entrypoint.sh /
+RUN chmod +x /*.sh
 
 EXPOSE 11940/udp
 
