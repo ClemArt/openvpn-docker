@@ -1,16 +1,20 @@
-FROM ubuntu:18.04
+FROM alpine:3.9.4
 
-RUN apt update && apt install -y curl
+LABEL maintainer=ClemArt
 
+RUN apk add openvpn iptables curl openssl
+#ca-certificates
 RUN curl -L https://pkg.cfssl.org/R1.2/cfssl_linux-amd64 -o /usr/bin/cfssl && \
     curl -L https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64 -o /usr/bin/cfssljson && \
     chmod +x /usr/bin/cfssl*
 
 COPY ./docker-entrypoint.sh /
 
-WORKDIR /ssl/pki
-
-VOLUME /ssl/pki
-VOLUME /ssl/config
+EXPOSE 11940/udp
 
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
+
+VOLUME /pki
+VOLUME /config
+
+CMD [ "start" ]
